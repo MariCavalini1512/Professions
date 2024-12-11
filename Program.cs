@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ProfessionsContext.Data; 
+
 namespace Professions
 {
     public class Program
@@ -6,24 +9,32 @@ namespace Professions
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Configuração para usar MySQL com a string de conexão correta
+            builder.Services.AddDbContext<ProfessionsContext>(options =>
+
+                options.UseMySql(
+                    builder.Configuration
+                        .GetConnectionString("ProfessionsContext"),
+                    ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("ProfessionsContext"))
+                    )
+                );
+            
+
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Configuração do pipeline HTTP
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -34,3 +45,4 @@ namespace Professions
         }
     }
 }
+

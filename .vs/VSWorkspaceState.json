@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Caminho\\para",
+    "\\Caminho\\para\\o",
+    "\\Caminho\\para\\o\\projeto",
+    "\\Caminho\\para\\o\\projeto\\obj",
+    "\\Data",
+    "\\obj",
+    "\\obj\\Release",
+    "\\Views",
+    "\\Views\\Genres"
+  ],
+  "SelectedNode": "\\Data\\ProfessionsContext.cs",
+  "PreviewInSolutionExplorer": false
+}
