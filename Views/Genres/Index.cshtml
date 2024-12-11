@@ -1,0 +1,42 @@
+﻿@using Professions.Models;
+@model IEnumerable<Genre>;
+
+@{
+    ViewData["Title"] = "Gêneros de Profissões";
+}
+
+<h1> @ViewData["Title"]</h1>
+
+
+<p>
+    <a asp-action="Create"> Adicionar nova profissão </a>
+</p>
+
+<table class=" table"> 
+    <thead>
+        <tr> 
+            @*Antes*@
+            <th> Nome</th>
+            @*Depois*@
+            <th>@Html.DisplayNameFor(Model => Model.Name)</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Genre item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+            </tr>
+        
+        }
+
+
+    </tbody>
+
+</table>
+
+
